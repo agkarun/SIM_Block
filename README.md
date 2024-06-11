@@ -1,0 +1,1 @@
+This is the python script used to get Service Provider Name & Circle for the mobile number mentioned in the Excel file. Then saves all the obtained details into the new Excell file. This program is mainly used to get the details for bulk of mobile numbers to send it to the Sim Blocking purpose which are involved in Cyber Crimes.
