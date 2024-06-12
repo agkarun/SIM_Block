@@ -117,12 +117,9 @@ except Exception as e:
 match server:
     case 1:
         simblock_obj.process_xl_file(constants.XL_FILE_PATH)
-        print("Paytm")
     case 2:
         simblock_obj.process_xl_file(constants.XL_FILE_PATH)
-        print("Easemydeal")
     case 3:
-        print("PayRup")
         simblock_obj.process_xl_file(constants.XL_FILE_PATH)
     case _:
         print("Choose between the options available..!")
