@@ -41,7 +41,6 @@ class Simblock:
     def make_payrup_request(self, mobile_number):
         try:
             response = requests.post(constants.PAYRUP_URL, json={'phoneNumber': mobile_number})
-            # print(response.content)
             json_obj = response.json()
             if json_obj['status'] is False:
                 return None
@@ -88,8 +87,8 @@ class Simblock:
                 json_obj = simblock_obj.make_payrup_request(mobile_number_cell.value)
                 if json_obj is None:
                     continue
-                LSA_cell.value = json_obj['result']['operator']
-                TSP_cell.value = json_obj['result']['circle']
+                LSA_cell.value = json_obj['result']['circle']
+                TSP_cell.value = json_obj['result']['operator']
 
             print('Processing ===> ' + str(mobile_number_cell.value) + ' (' + str(i - 1) + ' of ' \
                   + str(simblock_obj.get_maximum_rows(sheet_obj) - 1) + ')  ' + \
@@ -108,12 +107,16 @@ class Simblock:
 
 
 simblock_obj = Simblock()
+
+# Getting input from user to select the server
 print("Please Select the server.\n\t 1.Paytm \n\t 2.EasemyDeal \n\t 3.PayRup")
 try:
     server = int(input("Choose (1 / 2 / 3): "))
 except Exception as e:
     print("Choose between the options available..!")
     exit()
+
+# Selecting the server for getting details
 match server:
     case 1:
         simblock_obj.process_xl_file(constants.XL_FILE_PATH)
